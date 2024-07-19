@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/note')->name('dashboard');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::middleware(['auth', 'verified'])->group(function(){
     // Route::get('/note', [NoteController::class, 'index'])->name('note.index');
     // Route::get('/note/create', [WelcomeController::class, 'create'])->name('note.create');
